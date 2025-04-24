@@ -33,18 +33,15 @@ public class JwtConfig {
         return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
     }
 
-    // Проверяет, валиден ли токен и не истёк ли срок действия
     public boolean isTokenValid(String token, UserDetails userDetails) {
         final String username = extractUsername(token);
         return (username.equals(userDetails.getUsername()) && !isTokenExpired(token));
     }
 
-    // Извлекает email пользователя из токена
     public String extractUsername(String token) {
         return getClaimsFromToken(token).getSubject();
     }
 
-    // Проверяет, истёк ли срок действия токена
     private boolean isTokenExpired(String token) {
         return getClaimsFromToken(token).getExpiration().before(new Date());
     }

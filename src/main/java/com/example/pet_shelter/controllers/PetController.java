@@ -24,13 +24,10 @@ public class PetController {
         return petService.getPetsByStatus(status);
     }
 
-    @PostMapping
-    @Operation(summary = "Добавить новое животное (только для SHELTER_ADMIN)")
-    public Pet addPet(@RequestBody Pet pet) {
-        return petService.addPet(pet);
-    }
+
 
     @PostMapping
+    @Operation(summary = "Добавить новое животное (только для SHELTER_ADMIN)")
     public Pet addPet(@Valid @RequestBody PetRequest request) {
         Pet pet = new Pet();
         pet.setName(request.getName());

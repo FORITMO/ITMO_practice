@@ -2,11 +2,17 @@ package com.example.pet_shelter.model.db.entity;
 
 import com.example.pet_shelter.model.enums.UserRole;
 import com.example.pet_shelter.model.db.entity.Application;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Data
 @Entity
 @Table(name = "users")
