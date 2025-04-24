@@ -5,10 +5,11 @@ import com.example.pet_shelter.model.db.repository.ReportRepository;
 import com.example.pet_shelter.model.enums.ReportStatus;
 import com.example.pet_shelter.service.ReportService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class ReportServiceImpl implements ReportService {

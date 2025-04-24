@@ -4,16 +4,29 @@ spring:
     username: postgres
     password: postgres
     driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 30000
+      maximum-pool-size: 10
 
   jpa:
-    database: postgresql
     show-sql: true
-    generate-ddl: true
     hibernate:
       ddl-auto: update
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        default_schema: public
         jdbc:
           lob:
             non_contextual_creation: true
+
+jwt:
+  secret: "your-256-bit-secret-change-me-to-real-secret"  # Минимум 32 символа
+  expiration: 86400000  # 24 часа в миллисекундах (1000*60*60*24)
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.springframework.security: INFO

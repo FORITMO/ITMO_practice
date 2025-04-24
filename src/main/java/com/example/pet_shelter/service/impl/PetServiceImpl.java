@@ -5,11 +5,12 @@ import com.example.pet_shelter.model.enums.PetStatus;
 import com.example.pet_shelter.model.db.repository.PetRepository;
 import com.example.pet_shelter.service.PetService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class PetServiceImpl implements PetService {

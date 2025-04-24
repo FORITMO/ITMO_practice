@@ -7,9 +7,10 @@ import com.example.pet_shelter.model.db.repository.VolunteerRepository;
 import com.example.pet_shelter.model.enums.TaskStatus;
 import com.example.pet_shelter.service.TaskService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TaskServiceImpl implements TaskService {

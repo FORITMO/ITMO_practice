@@ -5,10 +5,11 @@ import com.example.pet_shelter.model.enums.TaskStatus;
 import com.example.pet_shelter.service.TaskService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/tasks")
 @RequiredArgsConstructor

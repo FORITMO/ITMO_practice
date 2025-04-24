@@ -7,14 +7,16 @@ import com.example.pet_shelter.model.enums.UserRole;
 import com.example.pet_shelter.model.db.repository.UserRepository;
 import com.example.pet_shelter.service.UserService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
+@Slf4j
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+public class UserServiceImpl implements UserService, UserDetailsService { // Добавляем UserDetailsService
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
@@ -25,7 +27,7 @@ public class UserServiceImpl implements UserService {
         user.setPhone(request.getPhone());
         user.setEmail(request.getEmail());
         user.setPassword(passwordEncoder.encode(request.getPassword()));
-        user.setRole(UserRole.USER); // По умолчанию роль USER
+        user.setRole(UserRole.USER);
 
         userRepository.save(user);
         return UserResponse.from(user);
@@ -40,6 +42,5 @@ public class UserServiceImpl implements UserService {
                         .roles(user.getRole().name())
                         .build())
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with email: " + email));
-
     }
 }

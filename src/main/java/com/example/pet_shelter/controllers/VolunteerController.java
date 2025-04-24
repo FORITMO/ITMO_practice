@@ -5,10 +5,11 @@ import com.example.pet_shelter.model.enums.VolunteerStatus;
 import com.example.pet_shelter.service.VolunteerService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@Slf4j
 @RestController
 @RequestMapping("/api/volunteers")
 @RequiredArgsConstructor
