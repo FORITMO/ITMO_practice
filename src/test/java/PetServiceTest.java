@@ -1,4 +1,5 @@
 import com.example.pet_shelter.model.db.entity.Pet;
+import com.example.pet_shelter.model.dto.response.PetResponse;
 import com.example.pet_shelter.model.enums.PetStatus;
 import com.example.pet_shelter.model.db.repository.PetRepository;
 import com.example.pet_shelter.service.impl.PetServiceImpl;
@@ -24,7 +25,7 @@ class PetServiceTest {
         pet.setStatus(PetStatus.LOST);
         when(petRepository.findByStatus(PetStatus.LOST)).thenReturn(List.of(pet));
 
-        List<Pet> result = petService.getPetsByStatus(PetStatus.LOST);
+        List<PetResponse> result = petService.getPetsByStatus(PetStatus.LOST);
         assertEquals(1, result.size());
         assertEquals(PetStatus.LOST, result.get(0).getStatus());
     }

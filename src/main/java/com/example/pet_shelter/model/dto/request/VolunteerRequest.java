@@ -2,17 +2,17 @@ package com.example.pet_shelter.model.dto.request;
 
 import com.example.pet_shelter.model.enums.VolunteerStatus;
 import lombok.Data;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 
 @Data
 public class VolunteerRequest {
-    @NotBlank(message = "Полное имя обязательно")
-    private String fullName;
+    @NotNull(message = "ID пользователя обязательно")
+    @Positive(message = "ID пользователя должен быть положительным числом")
+    private Long userId;
 
-    @NotBlank(message = "Телефон обязателен")
-    private String phone;
+    @NotNull(message = "ID приюта обязательно")
+    @Positive(message = "ID приюта должен быть положительным числом")
+    private Long shelterId;
 
-    @NotNull(message = "Статус обязателен")
     private VolunteerStatus status;
 }
