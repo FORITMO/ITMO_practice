@@ -2,6 +2,8 @@ package com.example.pet_shelter.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,19 +36,28 @@ public class SecurityConfig {
             JwtConfig jwtConfig,
             UserDetailsService userDetailsService) throws Exception {
 
-        http.csrf().disable()
+        http
+                .csrf().disable()
+                .cors().and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/api/auth/**").permitAll()
-                .antMatchers("/api/admin/**").hasRole("SYSTEM_ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .addFilterBefore(
-                        new JwtAuthenticationFilter(jwtConfig, userDetailsService),
-                        UsernamePasswordAuthenticationFilter.class
-                );
+                .antMatchers("/api/**").permitAll()
+              //  .antMatchers(HttpMethod.POST, "/api/users/register").permitAll()
+              //  .antMatchers("/api/admin/**").hasRole("SYSTEM_ADMIN")
+                .anyRequest().permitAll();
+             //   .and()
+              //  .addFilterBefore(
+             //           new JwtAuthenticationFilter(jwtConfig, userDetailsService),
+             //           UsernamePasswordAuthenticationFilter.class
+             //   )
+             //   .exceptionHandling()
+             //   .authenticationEntryPoint((request, response, authException) -> {
+              //      response.sendError(HttpStatus.UNAUTHORIZED.value(), "Unauthorized");
+             //   });
 
         return http.build();
     }
+
+
 }
