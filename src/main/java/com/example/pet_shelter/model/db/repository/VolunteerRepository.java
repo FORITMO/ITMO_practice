@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface VolunteerRepository extends JpaRepository<Volunteer, Long> {
-    List<Volunteer> findByShelterId(Long shelterId);  // Волонтёры приюта
+    List<Volunteer> findByShelterId(Long shelterId);
     List<Volunteer> findByStatus(VolunteerStatus status);
-    Optional<Volunteer> findByUserId(Long userId);// По статусу
+    Optional<Volunteer> findByUserId(Long userId);
 }

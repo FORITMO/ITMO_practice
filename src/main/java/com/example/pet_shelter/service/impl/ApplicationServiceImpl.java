@@ -14,7 +14,7 @@ public class ApplicationServiceImpl implements ApplicationService {
 
     @Override
     public Application create(Application application) {
-        // Здесь можно добавить дополнительную логику валидации
+
         return applicationRepository.save(application);
     }
 }

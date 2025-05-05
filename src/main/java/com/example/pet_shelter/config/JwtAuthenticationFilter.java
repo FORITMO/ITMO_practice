@@ -24,7 +24,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtConfig jwtConfig;
     private final UserDetailsService userDetailsService;
 
-    // Список публичных эндпоинтов
+
     private static final List<String> PUBLIC_ENDPOINTS = List.of(
             "/api/auth/",
             "/api/users/register",
@@ -41,7 +41,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         final String requestUri = request.getRequestURI();
 
-        // Пропускаем публичные эндпоинты
+
         if (isPublicEndpoint(requestUri, request.getMethod())) {
             filterChain.doFilter(request, response);
             return;
@@ -49,7 +49,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         final String authHeader = request.getHeader("Authorization");
 
-        // Проверяем наличие токена
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             sendError(response, "Missing or invalid Authorization header", HttpStatus.UNAUTHORIZED);
             return;

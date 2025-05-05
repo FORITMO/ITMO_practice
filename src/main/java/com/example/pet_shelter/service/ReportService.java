@@ -8,4 +8,5 @@ import java.util.List;
 public interface ReportService {
     List<Report> getReportsByPet(Long petId);
     Report updateStatus(Long reportId, ReportStatus status);
+    Report createReport(Long petId,Report report);
 }

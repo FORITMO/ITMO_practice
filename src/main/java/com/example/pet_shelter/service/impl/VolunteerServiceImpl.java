@@ -30,7 +30,7 @@ public class VolunteerServiceImpl implements VolunteerService {
     @Override
     @Transactional
     public VolunteerResponse registerVolunteer(VolunteerRequest request) {
-        // Дополнительная бизнес-валидация
+
         validateVolunteerRequest(request);
 
         User user = userRepository.findById(request.getUserId())
@@ -39,7 +39,7 @@ public class VolunteerServiceImpl implements VolunteerService {
         Shelter shelter = shelterRepository.findById(request.getShelterId())
                 .orElseThrow(() -> new ValidationException("Приют с ID " + request.getShelterId() + " не найден"));
 
-        // Проверка, что пользователь уже не является волонтером
+
         volunteerRepository.findByUserId(request.getUserId()).ifPresent(v -> {
             throw new ValidationException("Пользователь уже зарегистрирован как волонтер");
         });

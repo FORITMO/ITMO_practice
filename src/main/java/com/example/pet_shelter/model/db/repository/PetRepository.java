@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface PetRepository extends JpaRepository<Pet, Long> {
     List<Pet> findByStatus(PetStatus status); // Поиск по статусу
+    List<Pet> findByShelterId(Long shelterId);
 }

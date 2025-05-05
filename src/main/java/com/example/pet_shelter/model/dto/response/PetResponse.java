@@ -15,5 +15,5 @@ public class PetResponse {
     private PetStatus status;
     private Long shelterId;
     private LocalDateTime createdAt;
-    private String shelterName; // Добавляем для удобства клиента
+    private String shelterName;
 }

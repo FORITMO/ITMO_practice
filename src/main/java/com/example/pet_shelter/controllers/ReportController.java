@@ -16,6 +16,16 @@ import java.util.List;
 public class ReportController {
     private final ReportService reportService;
 
+    @PostMapping
+    @Operation(summary = "Создать новый отчёт")
+    public Report createReport(
+            @RequestParam Long petId,
+            @RequestBody Report report
+    ) {
+        log.info("Creating report for pet: {}", petId);
+        return reportService.createReport(petId, report);
+    }
+
     @GetMapping("/pet/{petId}")
     @Operation(summary = "Отчёты по животному")
     public List<Report> getByPet(@PathVariable Long petId) {

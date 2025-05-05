@@ -13,17 +13,17 @@ public class Report {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;  // Текст отчёта
-    private LocalDate date;      // Дата создания
+    private String description;
+    private LocalDate date;
 
     @Enumerated(EnumType.STRING)
     private ReportStatus status;
 
     @ManyToOne
     @JoinColumn(name = "volunteer_id")
-    private Volunteer volunteer;  // Автор отчёта
+    private Volunteer volunteer;
 
     @ManyToOne
     @JoinColumn(name = "pet_id")
-    private Pet pet;  // Животное, по которому отчёт
+    private Pet pet;
 }
